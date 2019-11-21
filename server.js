@@ -1,6 +1,12 @@
 const express = require('express');
-
+const connectDB = require('./config/db');
 const app = express();
+
+// connect to database
+connectDB();
+
+// Init Middleware, now we can recieve body data
+app.use(express.json({ extended: false }));
 
 app.get('/', (req, res) => res.json({ msg: 'wow a json message' }));
 
